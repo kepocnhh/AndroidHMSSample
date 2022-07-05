@@ -51,6 +51,12 @@ android {
 }
 
 dependencies {
-    implementation("com.huawei.hms:push:6.5.0.300")
     implementation("com.huawei.hms:location:6.4.0.300")
+    implementation("com.huawei.hms:push:6.5.0.300")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0")
+//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.5.0")
+//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0")
+//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
+//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3")
 }
