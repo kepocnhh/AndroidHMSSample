@@ -1,11 +1,15 @@
+import java.util.Properties
+
 repositories {
     mavenCentral()
     google()
+    maven("https://developer.huawei.com/repo/")
 }
 
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("com.huawei.agconnect")
 }
 
 android {
@@ -25,6 +29,15 @@ android {
             versionNameSuffix = "-$name"
             isMinifyEnabled = false
             isShrinkResources = false
+            signingConfig = signingConfigs.getByName(name) {
+                storeFile = File(rootDir, "key.pkcs12")
+                val properties = Properties().also {
+                    File(rootDir, "properties").inputStream().use(it::load)
+                }
+                storePassword = properties["password"] as String
+                keyPassword = storePassword
+                keyAlias = name
+            }
         }
     }
 
@@ -38,5 +51,6 @@ android {
 }
 
 dependencies {
-    // todo
+    implementation("com.huawei.hms:push:6.5.0.300")
+    implementation("com.huawei.hms:location:6.4.0.300")
 }
